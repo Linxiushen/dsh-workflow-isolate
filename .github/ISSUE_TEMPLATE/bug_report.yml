@@ -1,0 +1,78 @@
+name: Bug report
+description: Report a reproducible engine, compatibility, or lifecycle defect.
+title: "bug: "
+labels: [bug, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for providing a minimal reproduction. For possible sandbox escapes, capability leaks, or limit bypasses, stop here and use the private process in SECURITY.md.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and did not find this problem.
+          required: true
+        - label: This report does not contain a security vulnerability or credentials.
+          required: true
+        - label: I can reproduce this on a supported Node.js and DSH version.
+          required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened, and what did you expect instead?
+      placeholder: The workflow ended with ...; I expected ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include the smallest workflow metadata, args, script, and relevant config. Redact prompts and outputs that contain sensitive data.
+      render: javascript
+    validations:
+      required: true
+
+  - type: textarea
+    id: events
+    attributes:
+      label: Result, events, and logs
+      description: Include stopReason, stable error code, termination metric, and workflow event order where relevant. Avoid secrets.
+      render: text
+    validations:
+      required: true
+
+  - type: input
+    id: package-version
+    attributes:
+      label: dsh-workflow-isolate version or commit
+      placeholder: 0.1.0 or commit SHA
+    validations:
+      required: true
+
+  - type: input
+    id: dsh-version
+    attributes:
+      label: DeepSeek Harness version
+      placeholder: 0.1.0-rc.7
+    validations:
+      required: true
+
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime and operating system
+      placeholder: Node 22.19.0, pnpm 11.19.0, Windows 11 x64
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Provider type, concurrency, cancellation timing, regression range, or anything else that helps isolate the defect.

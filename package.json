@@ -1,0 +1,103 @@
+{
+  "name": "dsh-workflow-isolate",
+  "version": "0.1.0",
+  "description": "QuickJS/WASM-isolated WorkflowEngine for running model-written DeepSeek Harness orchestration with bounded resource controls.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Linxiushen",
+  "homepage": "https://github.com/Linxiushen/dsh-workflow-isolate#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Linxiushen/dsh-workflow-isolate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Linxiushen/dsh-workflow-isolate/issues"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "workflow-engine",
+    "quickjs",
+    "wasm",
+    "sandbox",
+    "agentic"
+  ],
+  "engines": {
+    "node": "^22.19.0 || ^24.0.0",
+    "pnpm": ">=11.7.0 <12"
+  },
+  "packageManager": "pnpm@11.19.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./protocol": {
+      "types": "./dist/protocol.d.ts",
+      "default": "./dist/protocol.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "docs",
+    "benchmarks",
+    "examples",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "benchmark": "pnpm build && node benchmarks/runtime-overhead.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint src tests benchmarks",
+    "test": "vitest run",
+    "test:dist": "node tests/dist-smoke.mjs",
+    "test:coverage": "vitest run --coverage",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm test:dist && pnpm publint",
+    "publint": "publint",
+    "prepack": "pnpm check"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "^3.18.1",
+    "quickjs-emscripten": "0.32.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.1-rc.1 <5",
+    "@deepseek-ai/dsh-agent": "0.1.0-rc.7",
+    "@deepseek-ai/dsh-llm": "0.1.0-rc.7",
+    "@deepseek-ai/dsh-subagent": "0.1.0-rc.7",
+    "@deepseek-ai/dsh-tools": "0.1.0-rc.7",
+    "@deepseek-ai/dsh-workflow": "0.1.0-rc.7"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.0.1",
+    "@deepseek-ai/dsh-agent": "0.1.0-rc.7",
+    "@deepseek-ai/dsh-llm": "0.1.0-rc.7",
+    "@deepseek-ai/dsh-subagent": "0.1.0-rc.7",
+    "@deepseek-ai/dsh-tools": "0.1.0-rc.7",
+    "@deepseek-ai/dsh-workflow": "0.1.0-rc.7",
+    "@types/node": "^24.10.0",
+    "@vitest/coverage-v8": "^4.1.10",
+    "oxlint": "^1.76.0",
+    "publint": "^0.3.18",
+    "tsx": "^4.20.6",
+    "tsdown": "^0.22.14",
+    "typescript": "6.0.3",
+    "vitest": "^4.1.10"
+  }
+}

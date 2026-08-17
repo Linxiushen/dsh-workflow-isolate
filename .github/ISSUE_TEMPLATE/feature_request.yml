@@ -1,0 +1,57 @@
+name: Feature request
+description: Propose a scoped engine, compatibility, or operability improvement.
+title: "feat: "
+labels: [enhancement, triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the workflow or operational problem, not only the proposed API.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Show the smallest API, config, or lifecycle change that would solve it.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Guest runtime and hooks
+        - Host/worker protocol
+        - Resource limits
+        - Cancellation and lifecycle
+        - DSH compatibility
+        - Observability
+        - Documentation and examples
+    validations:
+      required: true
+
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Security and compatibility impact
+      description: Does this expose a new guest capability, accepted data type, native callback, provider option, shared state, or DSH dependency?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Include what can be done with the existing agent/combinator surface.
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope confirmation
+      options:
+        - label: I understand this engine intentionally provides no direct filesystem, network, process, module, or timer APIs to guest scripts.
+          required: true

@@ -1,0 +1,18 @@
+# Replace the developer-preview node:vm engine while preserving the public
+# ctx.workflowEngine service consumed by dsh-tool-workflow and tool-ralph.
+- id: workflow-worker-thread
+  disabled: true
+
+- insert:
+    - id: workflow-isolate
+      name: "dsh-workflow-isolate"
+      config:
+        provider: spawn
+        memoryLimitBytes: 67108864
+        maxInterruptTicks: 250000
+        maxAgentRequestBytes: 1048576
+        maxWallTimeMs: 600000
+        maxConcurrentAgents: 0
+        maxTotalAgents: 1000
+        maxItemsPerCall: 4096
+        disposeGraceMs: 3000

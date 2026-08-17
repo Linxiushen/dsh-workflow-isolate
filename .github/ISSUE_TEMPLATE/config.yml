@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/Linxiushen/dsh-workflow-isolate/security/advisories/new
+    about: Use GitHub private vulnerability reporting for escapes, capability leaks, and limit bypasses.
+  - name: DeepSeek Harness upstream
+    url: https://github.com/deepseek-ai/deepseek-harness/issues
+    about: Report issues reproducible with the official workflow worker-thread engine upstream.
