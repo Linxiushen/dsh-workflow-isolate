@@ -94,7 +94,7 @@
     "@types/node": "^24.10.0",
     "@vitest/coverage-v8": "^4.1.10",
     "oxlint": "^1.76.0",
-    "publint": "^0.3.18",
+    "publint": "^0.3.24",
     "tsx": "^4.20.6",
     "tsdown": "^0.22.14",
     "typescript": "6.0.3",
