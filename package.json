@@ -93,7 +93,7 @@
     "@deepseek-ai/dsh-workflow": "0.1.0-rc.7",
     "@types/node": "^24.10.0",
     "@vitest/coverage-v8": "^4.1.10",
-    "oxlint": "^1.76.0",
+    "oxlint": "^1.79.0",
     "publint": "^0.3.18",
     "tsx": "^4.20.6",
     "tsdown": "^0.22.14",
